@@ -6,6 +6,10 @@ export class LoginPage {
     public passwordField = this.page.getByPlaceholder('Password');
     public loginButton = this.page.locator('[data-test="login-button"]');
 
+    public errorMessages = {
+        failedLoginErrorText: "Epic sadface: Username and password do not match any user in this service",
+    }
+
     async fillUsernameField(username: string) {
         await this.usernameField.fill(username);
     }

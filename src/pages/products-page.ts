@@ -3,19 +3,12 @@ import {Page, Locator} from "@playwright/test";
 export class ProductsPage {
     constructor(public page: Page) {}
 
-    public shoppingCartBadge = this.page.locator('[data-test="shopping-cart-badge"]');
-    public shoppingCartLink = this.page.locator('[data-test="shopping-cart-link"]');
-
-    async clickShoppingCartLink() {
-        await this.shoppingCartLink.click();
+    public addToCartButton(item: string): Locator {
+        return this.page.locator(`[data-test="add-to-cart-${item.toLowerCase().replace(/ /g, '-')}"]` );
     }
 
-    addToCartButton(item: string): Locator {
-        return this.page.getByRole('button', { name: `add-to-cart-${item.toLowerCase().replace(/ /g, '-')}` });
-    }
-
-    removeButton(item: string): Locator {
-        return this.page.getByRole('button', { name: `remove-${item.toLowerCase().replace(' ', '-')}` });
+    public removeButton(item: string): Locator {
+        return this.page.locator(`[data-test="remove-${item.toLowerCase().replace(/ /g, '-')}"]`);
     }
 
     async clickAddToCartButton(item: string)  {
