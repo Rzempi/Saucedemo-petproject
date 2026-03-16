@@ -33,7 +33,7 @@ Saucedemo-petproject
 │
 ├── .github/workflows/    # GitHub Actions CI configuration
 │
-├── playwright.config.ts  # Playwright configuration
+├── playwright.config.ts
 ├── package.json
 └── README.md
 ```
@@ -47,13 +47,15 @@ Saucedemo-petproject
 ### Positive Scenarios
 Examples include:
 
-- _to be filled_
+- Log in, add few random products to the cart and do successful checkout,
+- Log in, add few random products to the cart and verify, that checkout correctly summarized its prices,
+- Log in and verify all four sort options are correctly sorting items.
 
 ### Negative Scenarios
-
 Examples include:
 
-- _to be filled_
+- Trying to log in with incorrect password
+- Log in, forward to checkout and try to continue without providing first name,
 
 ---
 
