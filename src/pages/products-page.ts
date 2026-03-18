@@ -4,6 +4,8 @@ import { formatProductName } from '../utils/helpers';
 export class ProductsPage {
     constructor(public page: Page) {}
 
+    public itemPrices = this.page.locator("[data-test='inventory-item-price']");
+
     public addToCartButton(item: string): Locator {
         return this.page.locator(`[data-test="add-to-cart-${formatProductName(item)}"]` );
     }

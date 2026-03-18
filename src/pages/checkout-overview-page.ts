@@ -3,6 +3,8 @@ import {Page} from "@playwright/test";
 export class CheckoutOverviewPage {
     constructor(public page: Page) {}
 
+    public totalValue = this.page.locator('[data-test="total-label"]');
+
     public finishButton = this.page.locator('[data-test="finish"]');
     public cancelButton = this.page.locator('[data-test="cancel"]');
 

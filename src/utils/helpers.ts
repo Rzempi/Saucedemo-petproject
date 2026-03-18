@@ -8,6 +8,10 @@ export function formatProductName(item: string) {
     return item.toLowerCase().replace(/ /g, '-');
 }
 
+export function formatPrice(price: string) {
+    return +(price.replace('$', ''));
+}
+
 // ======================
 // RANDOM HELPERS
 // ======================
