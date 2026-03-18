@@ -1,14 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { users } from "../test-data/users";
-import { products } from "../test-data/products";
-import { Navbar } from "../src/components/navbar";
-import { LoginPage } from "../src/pages/login-page";
-import { ProductsPage } from "../src/pages/products-page";
-import { YourCartPage } from "../src/pages/your-cart-page";
-import { CheckoutPage } from "../src/pages/checkout-page";
-import { CheckoutOverviewPage } from "../src/pages/checkout-overview-page";
-import { CheckoutCompletePage } from "../src/pages/checkout-complete-page";
-import { getArrayOfBooleans } from "../src/utils/data-generators";
+import { users, products } from "../test-data";
+import { Navbar } from "../src/components";
+import { LoginPage, ProductsPage, YourCartPage, CheckoutPage, CheckoutOverviewPage, CheckoutCompletePage } from "../src/pages";
+import { getArrayOfBooleans } from "../src/utils";
 
 test('test', { tag: '@e2e' }, async ({ page }) => {
     const loginPage = new LoginPage(page);
