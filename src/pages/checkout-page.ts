@@ -7,12 +7,12 @@ export class CheckoutPage {
     public zipPostalCodeField = this.page.locator('[data-test="postalCode"]');
     public continueButton = this.page.locator('#continue');
     public cancelButton = this.page.locator('#cancel');
-    public errorMessage = this.page.locator('[data-test="error"]');
 
-    public errorMessages = {
+    public errors = {
+        locator: this.page.locator('[data-test="error"]'),
         firstNameErrorText: "Error: First Name is required",
         lastNameErrorText: "Error: Last Name is required",
-        zipPostalCodeErrorText: "Error: Postal Code is required",
+        zipPostalCodeErrorText: "Error: Postal Code is required"
     }
     
     async fillFirstNameField(firstName: string) {
