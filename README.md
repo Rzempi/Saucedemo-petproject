@@ -2,7 +2,7 @@
 
 This project contains automated tests for the [https://www.saucedemo.com](https://www.saucedemo.com) website using **Playwright**, **TypeScript**, and the **Page Object Model (POM)** design pattern.
 
-The purpose of this project is to demonstrate modern **QA automation practices**, including structured test architecture, reusable fixtures, tagged tests, API checks, reporting, and CI integration.
+The purpose of this project is to demonstrate modern **QA automation practices**, including structured test architecture, reusable fixtures, tagged tests, UI and API performance checks, reporting, and CI integration.
 
 ---
 
@@ -24,17 +24,21 @@ Saucedemo-petproject
 │
 ├── src
 │   ├── pages/            # Page Object Model classes
-│   ├── components/       # Reusable UI components (header, cart, etc.)
+│   ├── components/       # Reusable UI components
 │   ├── fixtures/         # Custom Playwright fixtures and test setup
 │   └── utils/            # Helper functions and utilities
 │
-├── tests/                # UI test specifications
-├── api-tests/            # API and performance tests
+├── tests/                # UI functional tests
+├── api-tests/            # API performance tests
 │
 ├── .github/workflows/    # GitHub Actions CI configuration
 │
+├── .gitignore
+├── .nvmrc
 ├── playwright.config.ts
+├── tsconfig.json
 ├── package.json
+├── package-lock.json
 └── README.md
 ```
 
@@ -59,10 +63,7 @@ Examples include:
 
 ---
 
-## API & Performance Checks
-
-The project also includes **API and performance checks** to validate backend behavior.
-
+## API performance Checks
 Examples include:
 
 - _to be filled_
@@ -85,19 +86,38 @@ The project uses multiple predefined users available in Saucedemo:
 
 Used tags:
 
-_to be filled_
+### Test type:
+```
+@functional
+@non-functional
+```
+### Test suite
 ```
 @smoke
 @regression
+```
+### Test nature:
+```
 @negative
+@positive
+```
+### Area:
+```
+@e2e
+@login
+@products
+@checkout
+```
+### Layer tested:
+```
+@ui
 @api
-@performance
 ```
 
 Example usage:
 
 ```bash
-npx playwright test --grep @smoke
+npx playwright test --grep @functional
 ```
 
 ---
@@ -181,7 +201,7 @@ npx playwright test --ui
 Run tests by tag:
 
 ```bash
-npx playwright test --grep @smoke
+npx playwright test --grep @functional
 ```
 
 ---

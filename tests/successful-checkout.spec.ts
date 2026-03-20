@@ -4,7 +4,7 @@ import { Navbar } from "../src/components";
 import { LoginPage, ProductsPage, YourCartPage, CheckoutPage, CheckoutOverviewPage, CheckoutCompletePage } from "../src/pages";
 import { getArrayOfBooleans } from "../src/utils";
 
-test('test', { tag: '@e2e' }, async ({ page }) => {
+test('test', { tag: [ '@functional', '@smoke', '@positive', '@e2e', '@ui' ] }, async ({ page }) => {
     const loginPage = new LoginPage(page);
     const navbar = new Navbar(page);
     const productsPage = new ProductsPage(page);

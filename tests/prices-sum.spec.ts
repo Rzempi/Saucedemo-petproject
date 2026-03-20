@@ -4,7 +4,7 @@ import { Navbar } from "../src/components";
 import { LoginPage, ProductsPage, YourCartPage, CheckoutPage, CheckoutOverviewPage, CheckoutCompletePage } from "../src/pages";
 import { getArrayOfBooleans, formatPrice } from "../src/utils";
 
-test('prices-sum', { tag: '@e2e' }, async ({ page }) => {
+test('prices-sum', { tag: [ '@functional', '@regression', '@positive', '@checkout', '@ui' ] }, async ({ page }) => {
     const loginPage = new LoginPage(page);
     const navbar = new Navbar(page);
     const productsPage = new ProductsPage(page);

@@ -4,9 +4,9 @@ import { formatPrice } from "../src/utils";
 import { Navbar } from "../src/components";
 import { LoginPage, ProductsPage } from "../src/pages";
 
-test.describe('Sorting verification', async () => {
+test.describe('Sorting verification', { tag: [ '@functional', '@regression', '@positive', '@products', '@ui' ] }, async () => {
 
-    test('Sorting A to Z', { tag: '@positive' }, async ({ page }) => {
+    test('Sorting A to Z', async ({ page }) => {
         const loginPage = new LoginPage(page);
         const navbar = new Navbar(page);
         const productsPage = new ProductsPage(page);

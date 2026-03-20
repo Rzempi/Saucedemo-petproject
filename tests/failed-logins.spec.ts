@@ -2,9 +2,9 @@ import { test, expect } from '@playwright/test';
 import { users } from "../test-data";
 import { LoginPage } from "../src/pages";
 
-test.describe('Failed logins', async () => {
+test.describe('Failed logins', {tag: [ '@functional', '@regression', '@negative', '@login', '@ui' ] }, async () => {
 
-    test('Incorrect username', {tag: '@negative'}, async ({page}) => {
+    test('Incorrect username', async ({page}) => {
         const loginPage = new LoginPage(page);
 
         await test.step('Go to page', async () => {

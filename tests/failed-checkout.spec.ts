@@ -3,9 +3,9 @@ import { users, products } from "../test-data";
 import { Navbar } from "../src/components";
 import { LoginPage, YourCartPage, CheckoutPage } from "../src/pages";
 
-test.describe('Failed checkout tests', () => {
+test.describe('Failed checkout tests', { tag: [ '@functional', '@regression', '@negative', '@checkout', '@ui' ] }, () => {
 
-    test('No first name', { tag: '@negative' }, async ({ page }) => {
+    test('No first name', async ({ page }) => {
         const loginPage = new LoginPage(page);
         const navbar = new Navbar(page);
         const yourCartPage = new YourCartPage(page);
