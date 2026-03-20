@@ -1,29 +1,13 @@
-import { test, expect } from '@playwright/test';
-import { users, products, sortOptions } from "../test-data";
+import { test } from '../src/fixtures/flowFixtures';
+import { expect } from '@playwright/test';
+import { products, sortOptions } from "../test-data";
 import { formatPrice } from "../src/utils";
-import { Navbar } from "../src/components";
-import { LoginPage, ProductsPage } from "../src/pages";
 
 test.describe('Sorting verification', { tag: [ '@functional', '@regression', '@positive', '@products', '@ui' ] }, async () => {
 
-    test('Sorting A to Z', async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        const navbar = new Navbar(page);
-        const productsPage = new ProductsPage(page);
+    test('Sorting A to Z', async ({ loggedIn, navbar, productsPage }) => {
 
         let sortedProducts = Object.values(products).sort();
-
-        await test.step('Go to page', async () => {
-            await page.goto('https://www.saucedemo.com/');
-        });
-
-        await test.step('Logging in', async () => {
-            await loginPage.fillUsernameField(users.standard.username);
-            await loginPage.fillPasswordField(users.standard.password);
-            await loginPage.clickLoginButton();
-        });
-
-        await expect(navbar.pageTitle).toHaveText('Products')
 
         await test.step('Select sorting option', async () => {
             await navbar.filterDropdown.selectOption(sortOptions.nameAToZ.value);
@@ -34,24 +18,9 @@ test.describe('Sorting verification', { tag: [ '@functional', '@regression', '@p
         }
     });
 
-    test('Sorting Z to A', { tag: '@positive' }, async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        const navbar = new Navbar(page);
-        const productsPage = new ProductsPage(page);
+    test('Sorting Z to A', async ({ loggedIn, navbar, productsPage }) => {
 
         let sortedProducts = Object.values(products).sort().reverse();
-
-        await test.step('Go to page', async () => {
-            await page.goto('https://www.saucedemo.com/');
-        });
-
-        await test.step('Logging in', async () => {
-            await loginPage.fillUsernameField(users.standard.username);
-            await loginPage.fillPasswordField(users.standard.password);
-            await loginPage.clickLoginButton();
-        });
-
-        await expect(navbar.pageTitle).toHaveText('Products')
 
         await test.step('Select sorting option', async () => {
             await navbar.filterDropdown.selectOption(sortOptions.nameZToA.value);
@@ -62,22 +31,7 @@ test.describe('Sorting verification', { tag: [ '@functional', '@regression', '@p
         }
     });
 
-    test('Sorting by Price DESC', { tag: '@positive' }, async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        const navbar = new Navbar(page);
-        const productsPage = new ProductsPage(page);
-
-        await test.step('Go to page', async () => {
-            await page.goto('https://www.saucedemo.com/');
-        });
-
-        await test.step('Logging in', async () => {
-            await loginPage.fillUsernameField(users.standard.username);
-            await loginPage.fillPasswordField(users.standard.password);
-            await loginPage.clickLoginButton();
-        });
-
-        await expect(navbar.pageTitle).toHaveText('Products')
+    test('Sorting by Price DESC', async ({ loggedIn, navbar, productsPage  }) => {
 
         await test.step('Select sorting option', async () => {
             await navbar.filterDropdown.selectOption(sortOptions.priceHighToLow.value);
@@ -90,22 +44,7 @@ test.describe('Sorting verification', { tag: [ '@functional', '@regression', '@p
         }
     });
 
-    test('Sorting by Price ASC', { tag: '@positive' }, async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        const navbar = new Navbar(page);
-        const productsPage = new ProductsPage(page);
-
-        await test.step('Go to page', async () => {
-            await page.goto('https://www.saucedemo.com/');
-        });
-
-        await test.step('Logging in', async () => {
-            await loginPage.fillUsernameField(users.standard.username);
-            await loginPage.fillPasswordField(users.standard.password);
-            await loginPage.clickLoginButton();
-        });
-
-        await expect(navbar.pageTitle).toHaveText('Products')
+    test('Sorting by Price ASC', async ({ loggedIn, navbar, productsPage  }) => {
 
         await test.step('Select sorting option', async () => {
             await navbar.filterDropdown.selectOption(sortOptions.priceLowToHigh.value);

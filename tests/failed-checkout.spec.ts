@@ -1,37 +1,9 @@
-import { test, expect } from '@playwright/test';
-import { users, products } from "../test-data";
-import { Navbar } from "../src/components";
-import { LoginPage, YourCartPage, CheckoutPage } from "../src/pages";
+import { test } from '../src/fixtures/flowFixtures';
+import { expect } from '@playwright/test';
 
 test.describe('Failed checkout tests', { tag: [ '@functional', '@regression', '@negative', '@checkout', '@ui' ] }, () => {
 
-    test('No first name', async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        const navbar = new Navbar(page);
-        const yourCartPage = new YourCartPage(page);
-        const checkoutPage = new CheckoutPage(page);
-
-        await test.step('Go to page', async () => {
-            await page.goto('https://www.saucedemo.com/');
-        });
-
-        await test.step('Logging in', async () => {
-            await loginPage.fillUsernameField(users.standard.username);
-            await loginPage.fillPasswordField(users.standard.password);
-            await loginPage.clickLoginButton();
-        });
-
-        await expect(navbar.pageTitle).toHaveText('Products')
-
-        await test.step('Continue to Your Cart', async () => {
-            await navbar.clickShoppingCartLink();
-        });
-
-        await expect(navbar.pageTitle).toHaveText('Your Cart')
-
-        await test.step('Continue to checkout', async () => {
-            await yourCartPage.clickCheckoutButton();
-        });
+    test('No first name', async ({ toCheckout, navbar, checkoutPage }) => {
 
         await expect(navbar.pageTitle).toHaveText('Checkout: Your Information')
 
@@ -44,33 +16,7 @@ test.describe('Failed checkout tests', { tag: [ '@functional', '@regression', '@
         expect(await checkoutPage.errors.locator.innerText()).toBe(checkoutPage.errors.firstNameErrorText)
     });
 
-    test('No last name', { tag: '@negative' }, async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        const navbar = new Navbar(page);
-        const yourCartPage = new YourCartPage(page);
-        const checkoutPage = new CheckoutPage(page);
-
-        await test.step('Go to page', async () => {
-            await page.goto('https://www.saucedemo.com/');
-        });
-
-        await test.step('Logging in', async () => {
-            await loginPage.fillUsernameField(users.standard.username);
-            await loginPage.fillPasswordField(users.standard.password);
-            await loginPage.clickLoginButton();
-        });
-
-        await expect(navbar.pageTitle).toHaveText('Products')
-
-        await test.step('Continue to Your Cart', async () => {
-            await navbar.clickShoppingCartLink();
-        });
-
-        await expect(navbar.pageTitle).toHaveText('Your Cart')
-
-        await test.step('Continue to checkout', async () => {
-            await yourCartPage.clickCheckoutButton();
-        });
+    test('No last name', async ({ toCheckout, navbar, checkoutPage }) => {
 
         await expect(navbar.pageTitle).toHaveText('Checkout: Your Information')
 
@@ -83,33 +29,7 @@ test.describe('Failed checkout tests', { tag: [ '@functional', '@regression', '@
         expect(await checkoutPage.errors.locator.innerText()).toBe(checkoutPage.errors.lastNameErrorText)
     });
 
-    test('No zip/postal code', { tag: '@negative' }, async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        const navbar = new Navbar(page);
-        const yourCartPage = new YourCartPage(page);
-        const checkoutPage = new CheckoutPage(page);
-
-        await test.step('Go to page', async () => {
-            await page.goto('https://www.saucedemo.com/');
-        });
-
-        await test.step('Logging in', async () => {
-            await loginPage.fillUsernameField(users.standard.username);
-            await loginPage.fillPasswordField(users.standard.password);
-            await loginPage.clickLoginButton();
-        });
-
-        await expect(navbar.pageTitle).toHaveText('Products')
-
-        await test.step('Continue to Your Cart', async () => {
-            await navbar.clickShoppingCartLink();
-        });
-
-        await expect(navbar.pageTitle).toHaveText('Your Cart')
-
-        await test.step('Continue to checkout', async () => {
-            await yourCartPage.clickCheckoutButton();
-        });
+    test('No zip/postal code', async ({ toCheckout, navbar, checkoutPage }) => {
 
         await expect(navbar.pageTitle).toHaveText('Checkout: Your Information')
 
