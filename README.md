@@ -139,6 +139,7 @@ The project integrates **Allure Reporter** for detailed test reports.
 Generate and open the report:
 
 ```bash
+mkdir allure-results
 npx playwright test
 npx allure generate ./allure-results --clean
 npx allure open
@@ -146,7 +147,9 @@ npx allure open
 
 The report includes:
 
-_to be filled_
+- test results grouped by projects
+- environment details
+- all other features provided by allure
 
 ---
 

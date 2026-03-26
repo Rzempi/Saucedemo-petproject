@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as os from "node:os";
 
 /**
  * Read environment variables from file.
@@ -22,7 +23,20 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: 6,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'line',
+    reporter: [
+            ["line"],
+            [
+                "allure-playwright",
+                {
+                    resultsDir: "allure-results",
+                    environmentInfo: {
+                        os_platform: os.platform(),
+                        os_release: os.release(),
+                        node_version: process.version,
+                    },
+                }
+            ]
+        ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -55,9 +69,9 @@ export default defineConfig({
             },
                 dependencies: ['setup'],
                 grepInvert: /@login/
-    },
+        },
 
-         {
+        {
              // This project runs all tests (except @login tagged) for problem_user
              name: 'chromium - problem_user',
             use: {
@@ -66,7 +80,7 @@ export default defineConfig({
             },
             dependencies: ['setup'],
             grepInvert: /@login/
-         },
+        },
 
         {
             // This project runs all tests (except @login tagged) for error_user
