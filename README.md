@@ -28,8 +28,10 @@ Saucedemo-petproject
 │   ├── fixtures/         # Custom Playwright fixtures and test setup
 │   └── utils/            # Helper functions and utilities
 │
-├── tests/                # UI functional tests
-├── api-tests/            # API performance tests
+├── tests/
+│   ├── storage-states/   # Files setting up storage states
+│   ├── ui/               # UI functional tests
+│   └── api/              # API performance tests
 │
 ├── .github/workflows/    # GitHub Actions CI configuration
 │
@@ -74,11 +76,19 @@ Examples include:
 
 The project uses multiple predefined users available in Saucedemo:
 
-| User | Description |
-|-----|-------------|
+| User            | Description                           |
+|-----------------|---------------------------------------|
 | `standard_user` | Standard user with full functionality |
-| `locked_out_user` | User that cannot log in |
-| `problem_user` | User with known UI issues |
+| `error_user`    | User with known order flow issues     |
+| `problem_user`  | User with known UI issues             |
+
+## Authentication Strategy
+
+This project uses Playwright's `storageState` and project dependencies
+to run tests across multiple users without repeating login steps.
+
+Each user session is initialized in a dedicated setup project and reused
+across test runs for efficiency and scalability.
 
 ---
 

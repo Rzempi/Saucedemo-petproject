@@ -1,4 +1,4 @@
-import { test } from '../src/fixtures/flowFixtures';
+import { test } from '../../src/fixtures/flowFixtures';
 import { expect } from '@playwright/test';
 
 test.describe('Failed checkout tests', { tag: [ '@functional', '@regression', '@negative', '@checkout', '@ui' ] }, () => {

@@ -20,9 +20,9 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: 6,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: 'line',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -33,24 +33,64 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+    projects: [
+        {
+            // This project creates storage states files
+            name: 'setup',
+            testMatch: /.*-setup\.ts/
+        },
+
+        {
+            // This project runs all tests related to logging in logic (not requiring storage state)
+            name: 'chromium - login',
+            grep: /@login/
+        },
+
+        {
+            // This project runs all tests (except @login tagged) for standard_user
+            name: 'chromium - standard_user',
+            use: {
+                ...devices['Desktop Chrome'],
+                storageState: 'playwright/.auth/standard_user.json',
+            },
+                dependencies: ['setup'],
+                grepInvert: /@login/
     },
 
-      /*
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+         {
+             // This project runs all tests (except @login tagged) for problem_user
+             name: 'chromium - problem_user',
+            use: {
+                ...devices['Desktop Chrome'],
+                storageState: 'playwright/.auth/problem_user.json',
+            },
+            dependencies: ['setup'],
+            grepInvert: /@login/
+         },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+        {
+            // This project runs all tests (except @login tagged) for error_user
+            name: 'chromium - error_user',
+            use: {
+                ...devices['Desktop Chrome'],
+                storageState: 'playwright/.auth/error_user.json',
+            },
+            dependencies: ['setup'],
+            grepInvert: /@login/
+        },
 
-  */
+        /*
+      {
+        name: 'firefox',
+        use: { ...devices['Desktop Firefox'] },
+      },
+
+      {
+        name: 'webkit',
+        use: { ...devices['Desktop Safari'] },
+      },
+
+    */
 
     /* Test against mobile viewports. */
     // {

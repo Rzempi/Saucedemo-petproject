@@ -1,7 +1,7 @@
-import { test } from '../src/fixtures/flowFixtures';
+import { test } from '../../src/fixtures/flowFixtures';
 import { expect } from '@playwright/test';
-import { products, sortOptions } from "../test-data";
-import { formatPrice } from "../src/utils";
+import { products, sortOptions } from "../../test-data";
+import { formatPrice } from "../../src/utils";
 
 test.describe('Sorting verification', { tag: [ '@functional', '@regression', '@positive', '@products', '@ui' ] }, async () => {
 

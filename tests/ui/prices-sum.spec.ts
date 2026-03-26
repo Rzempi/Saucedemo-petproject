@@ -1,7 +1,7 @@
-import { test } from '../src/fixtures/flowFixtures';
+import { test } from '../../src/fixtures/flowFixtures';
 import { expect } from '@playwright/test';
-import { products } from "../test-data";
-import { getArrayOfBooleans, formatPrice } from "../src/utils";
+import { products } from "../../test-data";
+import { getArrayOfBooleans, formatPrice } from "../../src/utils";
 
 test('prices-sum', { tag: [ '@functional', '@regression', '@positive', '@checkout', '@ui' ] }, async (
     {

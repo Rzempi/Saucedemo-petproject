@@ -1,4 +1,4 @@
-import { test } from '../src/fixtures/flowFixtures';
+import { test } from '../../src/fixtures/flowFixtures';
 import { expect } from '@playwright/test';
 
 test('successful-checkout', { tag: [ '@functional', '@smoke', '@positive', '@e2e', '@ui' ] }, async ({ toCompletedCheckout, navbar, checkoutCompletePage  }) => {
