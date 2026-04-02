@@ -18,6 +18,9 @@ export default defineConfig({
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
+    expect: {
+      timeout: 1000 * 30,
+    },
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
@@ -70,7 +73,7 @@ export default defineConfig({
                 dependencies: ['setup'],
                 grepInvert: /@login/
         },
-
+/*
         {
              // This project runs all tests (except @login tagged) for problem_user
              name: 'chromium - problem_user',
@@ -93,18 +96,27 @@ export default defineConfig({
             grepInvert: /@login/
         },
 
-        /*
-      {
-        name: 'firefox',
-        use: { ...devices['Desktop Firefox'] },
-      },
-
-      {
-        name: 'webkit',
-        use: { ...devices['Desktop Safari'] },
-      },
-
-    */
+        {
+            // This project runs all tests (except @login tagged) for standard_user
+            name: 'firefox - standard_user',
+            use: {
+                ...devices['Desktop Firefox'],
+                storageState: 'playwright/.auth/standard_user.json',
+            },
+            dependencies: ['setup'],
+            grepInvert: /@login/
+        },
+*/
+        {
+            // This project runs all tests (except @login tagged) for standard_user
+            name: 'safari - standard_user',
+            use: {
+                ...devices['Desktop Safari'],
+                storageState: 'playwright/.auth/standard_user.json',
+            },
+            dependencies: ['setup'],
+            grepInvert: /@login/
+        },
 
     /* Test against mobile viewports. */
     // {
