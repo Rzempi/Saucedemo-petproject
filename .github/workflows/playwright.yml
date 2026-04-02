@@ -25,8 +25,7 @@ jobs:
     - name: Run Playwright tests
       run: npx playwright test
     - name: Run Allure Action
-      uses: allure-framework/allure-report@v0
+      uses: allure-framework/allure-action@v0
       with:
         report-directory: "./allure-report"
-        # GitHub Token that's used for posting the comments in Pull Requests
         github-token: ${{ secrets.GITHUB_TOKEN }}
