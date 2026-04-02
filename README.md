@@ -2,7 +2,7 @@
 
 This project contains automated tests for the [https://www.saucedemo.com](https://www.saucedemo.com) website using **Playwright**, **TypeScript**, and the **Page Object Model (POM)** design pattern.
 
-The purpose of this project is to demonstrate modern **QA automation practices**, including structured test architecture, reusable fixtures, tagged tests, UI and API performance checks, reporting, and CI integration.
+The purpose of this project is to demonstrate modern **QA automation practices**, including structured test architecture, reusable fixtures, tagged tests, UI checks, reporting, and CI integration.
 
 ---
 
@@ -31,7 +31,6 @@ Saucedemo-petproject
 ├── tests/
 │   ├── storage-states/   # Files setting up storage states
 │   ├── ui/               # UI functional tests
-│   └── api/              # API performance tests
 │
 ├── .github/workflows/    # GitHub Actions CI configuration
 │
@@ -62,13 +61,6 @@ Examples include:
 
 - Trying to log in with incorrect password
 - Log in, forward to checkout and try to continue without providing first name,
-
----
-
-## API performance Checks
-Examples include:
-
-- _to be filled_
 
 ---
 
@@ -121,7 +113,6 @@ Used tags:
 ### Layer tested:
 ```
 @ui
-@api
 ```
 
 Example usage:
@@ -149,7 +140,7 @@ The report includes:
 
 - test results grouped by projects
 - environment details
-- all other features provided by allure
+- all other default features provided by allure
 
 ---
 
@@ -159,7 +150,10 @@ Automated tests run using **GitHub Actions** on each push or pull request.
 
 The CI pipeline includes:
 
-_to be filled_
+- Installing dependencies
+- Installing Playwright Browsers
+- Running Playwright tests
+- Generating Allure report (on pull request only) and adding it to the PR comment
 
 Workflow configuration is located in:
 

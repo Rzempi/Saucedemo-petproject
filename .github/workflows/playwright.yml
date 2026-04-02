@@ -27,5 +27,6 @@ jobs:
     - name: Run Allure Action
       uses: allure-framework/allure-action@v0
       with:
+        # Allure report generated on pull request and added in the PR comment
         report-directory: "./allure-report"
         github-token: ${{ secrets.GITHUB_TOKEN }}
