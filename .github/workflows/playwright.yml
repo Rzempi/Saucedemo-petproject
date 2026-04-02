@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  Run all tests and generate report:
+  Run_all_tests_and_generate_report:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
