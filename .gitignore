@@ -1,6 +1,5 @@
 /tmp
 /out-tsc
-.idea
 
 /node_modules
 npm-debug.log*
@@ -22,3 +21,6 @@ node_modules/
 # Allure
 /allure-results/
 /allure-report/
+
+# WebStorm
+.idea
