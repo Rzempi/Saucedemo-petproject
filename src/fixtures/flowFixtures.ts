@@ -38,37 +38,5 @@ export const test = base.extend<FlowFixtures>({
         await yourCartPage.clickCheckoutButton();
 
         await use();
-    },
-    toCompletedCheckout: async (
-        {
-            page,
-            navbar,
-            yourCartPage,
-            checkoutPage,
-            checkoutOverviewPage,
-        },
-        use
-    ) => {
-        // 1. Go to products page
-        await page.goto('/inventory.html');
-
-        // 2. Continue to your cart
-        await navbar.clickShoppingCartLink();
-
-        // 3. Continue to checkout
-        await yourCartPage.clickCheckoutButton();
-
-        // 4. Fill checkout form
-        await checkoutPage.fillFirstNameField("testFirstName");
-        await checkoutPage.fillLastNameField("testLastName");
-        await checkoutPage.fillZipPostalCodeField("50-506");
-
-        // 5. Continue to order overview
-        await checkoutPage.clickContinueButton();
-
-        // 6. Finish the order
-        await checkoutOverviewPage.clickFinishButton();
-
-        await use();
     }
 });

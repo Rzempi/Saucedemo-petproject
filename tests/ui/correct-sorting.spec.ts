@@ -7,6 +7,8 @@ test.describe('Sorting verification', { tag: [ '@functional', '@regression', '@p
 
     test('Sorting A to Z', async ({ loggedIn, navbar, productsPage }) => {
 
+        await expect(navbar.pageTitle).toHaveText('Products')
+
         let sortedProducts = Object.values(products).sort();
 
         await test.step('Select sorting option', async () => {
@@ -19,6 +21,8 @@ test.describe('Sorting verification', { tag: [ '@functional', '@regression', '@p
     });
 
     test('Sorting Z to A', async ({ loggedIn, navbar, productsPage }) => {
+
+        await expect(navbar.pageTitle).toHaveText('Products')
 
         let sortedProducts = Object.values(products).sort().reverse();
 
@@ -33,6 +37,8 @@ test.describe('Sorting verification', { tag: [ '@functional', '@regression', '@p
 
     test('Sorting by Price DESC', async ({ loggedIn, navbar, productsPage  }) => {
 
+        await expect(navbar.pageTitle).toHaveText('Products')
+
         await test.step('Select sorting option', async () => {
             await navbar.filterDropdown.selectOption(sortOptions.priceHighToLow.value);
         });
@@ -45,6 +51,8 @@ test.describe('Sorting verification', { tag: [ '@functional', '@regression', '@p
     });
 
     test('Sorting by Price ASC', async ({ loggedIn, navbar, productsPage  }) => {
+
+        await expect(navbar.pageTitle).toHaveText('Products')
 
         await test.step('Select sorting option', async () => {
             await navbar.filterDropdown.selectOption(sortOptions.priceLowToHigh.value);

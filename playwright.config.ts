@@ -18,9 +18,8 @@ export default defineConfig({
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-    expect: {
-      timeout: 1000 * 30,
-    },
+    /* Greater timeout on assertions */
+    expect: { timeout: 1000 * 15 },
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
@@ -73,7 +72,7 @@ export default defineConfig({
                 dependencies: ['setup'],
                 grepInvert: /@login/
         },
-/*
+
         {
              // This project runs all tests (except @login tagged) for problem_user
              name: 'chromium - problem_user',
@@ -95,7 +94,7 @@ export default defineConfig({
             dependencies: ['setup'],
             grepInvert: /@login/
         },
-
+/*
         {
             // This project runs all tests (except @login tagged) for standard_user
             name: 'firefox - standard_user',

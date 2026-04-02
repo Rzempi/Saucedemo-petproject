@@ -8,12 +8,19 @@ test.describe('Failed checkout tests', { tag: [ '@functional', '@regression', '@
         await expect(navbar.pageTitle).toHaveText('Checkout: Your Information')
 
         await test.step('Fill order details', async () => {
+            await expect(checkoutPage.lastNameField).toBeVisible();
             await checkoutPage.fillLastNameField("testLastName");
+            await expect(checkoutPage.lastNameField).toHaveValue("testLastName");
+
+            await expect(checkoutPage.zipPostalCodeField).toBeVisible();
             await checkoutPage.fillZipPostalCodeField("50-506");
+            await expect(checkoutPage.zipPostalCodeField).toHaveValue("50-506");
+
+            await expect(checkoutPage.continueButton).toBeVisible();
             await checkoutPage.clickContinueButton();
         });
 
-        expect(await checkoutPage.errors.locator.innerText()).toBe(checkoutPage.errors.firstNameErrorText)
+        await expect(checkoutPage.errors.locator).toHaveText(checkoutPage.errors.firstNameErrorText)
     });
 
     test('No last name', async ({ toCheckout, navbar, checkoutPage }) => {
@@ -21,12 +28,19 @@ test.describe('Failed checkout tests', { tag: [ '@functional', '@regression', '@
         await expect(navbar.pageTitle).toHaveText('Checkout: Your Information')
 
         await test.step('Fill order details', async () => {
+            await expect(checkoutPage.firstNameField).toBeVisible();
             await checkoutPage.fillFirstNameField("testFirstName");
+            await expect(checkoutPage.firstNameField).toHaveValue("testFirstName");
+
+            await expect(checkoutPage.zipPostalCodeField).toBeVisible();
             await checkoutPage.fillZipPostalCodeField("50-506");
+            await expect(checkoutPage.zipPostalCodeField).toHaveValue("50-506");
+
+            await expect(checkoutPage.continueButton).toBeVisible();
             await checkoutPage.clickContinueButton();
         });
 
-        expect(await checkoutPage.errors.locator.innerText()).toBe(checkoutPage.errors.lastNameErrorText)
+        await expect(checkoutPage.errors.locator).toHaveText(checkoutPage.errors.lastNameErrorText)
     });
 
     test('No zip/postal code', async ({ toCheckout, navbar, checkoutPage }) => {
@@ -34,11 +48,18 @@ test.describe('Failed checkout tests', { tag: [ '@functional', '@regression', '@
         await expect(navbar.pageTitle).toHaveText('Checkout: Your Information')
 
         await test.step('Fill order details', async () => {
+            await expect(checkoutPage.firstNameField).toBeVisible();
             await checkoutPage.fillFirstNameField("testFirstName");
+            await expect(checkoutPage.firstNameField).toHaveValue("testFirstName");
+
+            await expect(checkoutPage.lastNameField).toBeVisible();
             await checkoutPage.fillLastNameField("testLastName");
+            await expect(checkoutPage.lastNameField).toHaveValue("testLastName");
+
+            await expect(checkoutPage.continueButton).toBeVisible();
             await checkoutPage.clickContinueButton();
         });
 
-        expect(await checkoutPage.errors.locator.innerText()).toBe(checkoutPage.errors.zipPostalCodeErrorText)
+        await expect(checkoutPage.errors.locator).toHaveText(checkoutPage.errors.zipPostalCodeErrorText)
     });
 });
