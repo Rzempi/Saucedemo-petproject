@@ -1,5 +1,3 @@
-// src/utils/helpers.ts
-
 // ======================
 // STRING HELPERS
 // ======================
@@ -18,8 +16,11 @@ export function formatPrice(price: string) {
 
 export function getArrayOfBooleans(length: number): boolean[] {
     let resultArray: boolean[] = [];
-    for (let i = 0; i < length; i++) {
-        resultArray.push(Math.random() < 0.5);
+    do {
+        for (let i = 0; i < length; i++) {
+            resultArray.push(Math.random() < 0.5);
+        }
     }
+    while (resultArray.filter(Boolean).length > 0);
     return resultArray;
 }
