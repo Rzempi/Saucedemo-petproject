@@ -1,5 +1,6 @@
 import { test } from '../../src/fixtures/flowFixtures';
 import { expect } from '@playwright/test';
+import { checkoutDetails } from "../../test-data";
 
 test('successful-checkout', { tag: [ '@functional', '@smoke', '@positive', '@e2e', '@ui' ] }, async ({ toCheckout, navbar, checkoutPage, checkoutOverviewPage, checkoutCompletePage  }) => {
 
@@ -7,16 +8,16 @@ test('successful-checkout', { tag: [ '@functional', '@smoke', '@positive', '@e2e
 
     await test.step("Fill checkout form", async () => {
         await expect(checkoutPage.firstNameField).toBeVisible();
-        await checkoutPage.fillFirstNameField("testFirstName");
-        await expect(checkoutPage.firstNameField).toHaveValue("testFirstName");
+        await checkoutPage.fillFirstNameField(checkoutDetails.firstName);
+        await expect(checkoutPage.firstNameField).toHaveValue(checkoutDetails.firstName);
 
         await expect(checkoutPage.lastNameField).toBeVisible();
-        await checkoutPage.fillLastNameField("testLastName");
-        await expect(checkoutPage.lastNameField).toHaveValue("testLastName");
+        await checkoutPage.fillLastNameField(checkoutDetails.lastName);
+        await expect(checkoutPage.lastNameField).toHaveValue(checkoutDetails.lastName);
 
         await expect(checkoutPage.zipPostalCodeField).toBeVisible();
-        await checkoutPage.fillZipPostalCodeField("50-506");
-        await expect(checkoutPage.zipPostalCodeField).toHaveValue("50-506");
+        await checkoutPage.fillZipPostalCodeField(checkoutDetails.zipPostalCode);
+        await expect(checkoutPage.zipPostalCodeField).toHaveValue(checkoutDetails.zipPostalCode);
     });
 
     await test.step("Continue to order overview", async () => {

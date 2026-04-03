@@ -1,5 +1,6 @@
 import { test } from '../../src/fixtures/flowFixtures';
 import { expect } from '@playwright/test';
+import { checkoutDetails } from "../../test-data";
 
 test.describe('Failed checkout tests', { tag: [ '@functional', '@regression', '@negative', '@checkout', '@ui' ] }, () => {
 
@@ -9,12 +10,12 @@ test.describe('Failed checkout tests', { tag: [ '@functional', '@regression', '@
 
         await test.step('Fill order details', async () => {
             await expect(checkoutPage.lastNameField).toBeVisible();
-            await checkoutPage.fillLastNameField("testLastName");
-            await expect(checkoutPage.lastNameField).toHaveValue("testLastName");
+            await checkoutPage.fillLastNameField(checkoutDetails.lastName);
+            await expect(checkoutPage.lastNameField).toHaveValue(checkoutDetails.lastName);
 
             await expect(checkoutPage.zipPostalCodeField).toBeVisible();
-            await checkoutPage.fillZipPostalCodeField("50-506");
-            await expect(checkoutPage.zipPostalCodeField).toHaveValue("50-506");
+            await checkoutPage.fillZipPostalCodeField(checkoutDetails.zipPostalCode);
+            await expect(checkoutPage.zipPostalCodeField).toHaveValue(checkoutDetails.zipPostalCode);
 
             await expect(checkoutPage.continueButton).toBeVisible();
             await checkoutPage.clickContinueButton();
@@ -29,12 +30,12 @@ test.describe('Failed checkout tests', { tag: [ '@functional', '@regression', '@
 
         await test.step('Fill order details', async () => {
             await expect(checkoutPage.firstNameField).toBeVisible();
-            await checkoutPage.fillFirstNameField("testFirstName");
-            await expect(checkoutPage.firstNameField).toHaveValue("testFirstName");
+            await checkoutPage.fillFirstNameField(checkoutDetails.firstName);
+            await expect(checkoutPage.firstNameField).toHaveValue(checkoutDetails.firstName);
 
             await expect(checkoutPage.zipPostalCodeField).toBeVisible();
-            await checkoutPage.fillZipPostalCodeField("50-506");
-            await expect(checkoutPage.zipPostalCodeField).toHaveValue("50-506");
+            await checkoutPage.fillZipPostalCodeField(checkoutDetails.zipPostalCode);
+            await expect(checkoutPage.zipPostalCodeField).toHaveValue(checkoutDetails.zipPostalCode);
 
             await expect(checkoutPage.continueButton).toBeVisible();
             await checkoutPage.clickContinueButton();
@@ -49,12 +50,12 @@ test.describe('Failed checkout tests', { tag: [ '@functional', '@regression', '@
 
         await test.step('Fill order details', async () => {
             await expect(checkoutPage.firstNameField).toBeVisible();
-            await checkoutPage.fillFirstNameField("testFirstName");
-            await expect(checkoutPage.firstNameField).toHaveValue("testFirstName");
+            await checkoutPage.fillFirstNameField(checkoutDetails.firstName);
+            await expect(checkoutPage.firstNameField).toHaveValue(checkoutDetails.firstName);
 
             await expect(checkoutPage.lastNameField).toBeVisible();
-            await checkoutPage.fillLastNameField("testLastName");
-            await expect(checkoutPage.lastNameField).toHaveValue("testLastName");
+            await checkoutPage.fillLastNameField(checkoutDetails.lastName);
+            await expect(checkoutPage.lastNameField).toHaveValue(checkoutDetails.lastName);
 
             await expect(checkoutPage.continueButton).toBeVisible();
             await checkoutPage.clickContinueButton();
