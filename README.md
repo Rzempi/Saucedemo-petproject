@@ -30,7 +30,7 @@ Saucedemo-petproject
 │
 ├── tests/
 │   ├── storage-states/   # Files setting up storage states
-│   ├── ui/               # UI functional tests
+│   └── ui/               # UI functional tests
 │
 ├── .github/workflows/    # GitHub Actions CI configuration
 │
@@ -66,13 +66,18 @@ Examples include:
 
 # Test Users
 
-The project uses multiple predefined users available in Saucedemo:
+The project uses multiple predefined users available in Saucedemo.
+From default, it will run only for standard and locked_out users.
+To enable tests running for other users, navigate to playwright.config.ts file and uncomment specific project configuration.
 
-| User            | Description                           |
-|-----------------|---------------------------------------|
-| `standard_user` | Standard user with full functionality |
-| `error_user`    | User with known order flow issues     |
-| `problem_user`  | User with known UI issues             |
+| User                      | Description                           |
+|---------------------------|---------------------------------------|
+| `standard_user`           | Standard user with full functionality |
+| `locked_out_user`         | User with locked access to the app    |
+| `error_user`              | User with known order flow issues     |
+| `problem_user`            | User with known UI issues             |
+| `performance_glitch_user` | User with known performance issue     |
+| `visual_user`             | User with known visual bugs           |
 
 ## Authentication Strategy
 
