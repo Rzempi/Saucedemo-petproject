@@ -8,7 +8,8 @@ export class LoginPage {
 
     public error = {
         locator: this.page.locator('[data-test="error"]'),
-        failedLoginErrorText: "Epic sadface: Username and password do not match any user in this service"
+        failedLoginErrorText: "Epic sadface: Username and password do not match any user in this service",
+        lockedUserErrorText: "Epic sadface: Sorry, this user has been locked out."
     }
 
     async fillUsernameField(username: string) {
