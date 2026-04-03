@@ -21,6 +21,6 @@ export function getArrayOfBooleans(length: number): boolean[] {
             resultArray.push(Math.random() < 0.5);
         }
     }
-    while (resultArray.filter(Boolean).length > 0);
+    while (resultArray.filter(Boolean).length < 0);
     return resultArray;
 }
