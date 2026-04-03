@@ -19,7 +19,7 @@ test.describe('Failed logins', {tag: [ '@functional', '@regression', '@negative'
             await loginPage.clickLoginButton();
         });
 
-        expect(await loginPage.error.locator.innerText()).toBe(loginPage.error.failedLoginErrorText);
+        await expect(loginPage.error.locator).toHaveText(loginPage.error.failedLoginErrorText);
     });
 
     test('Incorrect password', async ({ openedPage, loginPage }) => {
@@ -37,6 +37,6 @@ test.describe('Failed logins', {tag: [ '@functional', '@regression', '@negative'
             await loginPage.clickLoginButton();
         });
 
-        expect(await loginPage.error.locator.innerText()).toBe(loginPage.error.failedLoginErrorText);
+        await expect(loginPage.error.locator).toHaveText(loginPage.error.failedLoginErrorText);
     });
 });
