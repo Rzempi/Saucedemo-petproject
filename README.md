@@ -173,7 +173,7 @@ Workflow configuration is located in:
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/Saucedemo-petproject.git
+git clone https://github.com/Rzempi/Saucedemo-petproject.git
 ```
 
 Install dependencies:
