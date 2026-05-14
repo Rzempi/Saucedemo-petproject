@@ -118,7 +118,6 @@ Used tags:
 ### Test type:
 ```
 @functional
-@non-functional
 ```
 ### Test suite
 ```
@@ -145,7 +144,7 @@ Used tags:
 Example usage:
 
 ```bash
-npx playwright test --grep @functional
+npm run test:functional
 ```
 
 ---
@@ -158,9 +157,9 @@ Generate and open the report:
 
 ```bash
 mkdir allure-results
-npx playwright test
-npx allure generate ./allure-results --clean
-npx allure open
+npm test
+npm run allure:generate
+npm run allure:open
 ```
 
 The report includes:
@@ -195,25 +194,25 @@ Workflow configuration is located in:
 Run all tests:
 
 ```bash
-npx playwright test
+npm test
 ```
 
 Run tests in headed mode:
 
 ```bash
-npx playwright test --headed
+npm run test:headed
 ```
 
 Run tests using UI mode:
 
 ```bash
-npx playwright test --ui
+npm run test:ui
 ```
 
 Run tests by tag:
 
 ```bash
-npx playwright test --grep @functional
+npm run test:functional
 ```
 
 ---

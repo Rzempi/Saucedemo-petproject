@@ -4,7 +4,34 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+
+    "test": "playwright test",
+
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+
+    "test:functional": "playwright test --grep @functional",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:negative": "playwright test --grep @negative",
+    "test:positive": "playwright test --grep @positive",
+    "test:e2e": "playwright test --grep @e2e",
+    "test:login": "playwright test --grep @login",
+    "test:products": "playwright test --grep @products",
+    "test:checkout": "playwright test --grep @checkout",
+
+    "test:standard": "playwright test --project=\"chromium - standard_user\"",
+    "test:problem": "playwright test --project=\"chromium - problem_user\"",
+    "test:error": "playwright test --project=\"chromium - error_user\"",
+    "test:performance": "playwright test --project=\"chromium - performance_glitch_user\"",
+    "test:visual": "playwright test --project=\"chromium - visual_user\"",
+
+    "allure:serve": "allure serve",
+    "allure:generate": "allure generate ./allure-results --clean",
+    "allure:open": "allure open",
+    "allure:clean": "rm -rf allure-results allure-report"
   },
   "dependencies": {
     "playwright": "^1.58.2"
