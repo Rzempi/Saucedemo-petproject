@@ -17,6 +17,28 @@ The purpose of this project is to demonstrate modern **QA automation practices**
 
 ---
 
+# Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Rzempi/Saucedemo-petproject.git
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Install Playwright browsers:
+
+```bash
+npx playwright install
+```
+
+---
+
 # Project Structure
 
 ```
@@ -164,28 +186,6 @@ Workflow configuration is located in:
 
 ```
 .github/workflows/
-```
-
----
-
-# Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/Rzempi/Saucedemo-petproject.git
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Install Playwright browsers:
-
-```bash
-npx playwright install
 ```
 
 ---
